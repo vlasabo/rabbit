@@ -1,0 +1,28 @@
+services:
+  rabbitmq:
+    image: 'rabbitmq:latest'
+    environment:
+      - ${RABBITMQ_PASS}
+      - ${RABBITMQ_USER}
+    ports:
+      - '5672'
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: postgres
+    image: postgres:15
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgresdata:/var/lib/postgresql/data
+    restart: on-failure
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASS}
+      POSTGRES_DB: ${POSTGRES_DB}
+    env_file:
+      - .env
+
+volumes:
+  postgresdata:
