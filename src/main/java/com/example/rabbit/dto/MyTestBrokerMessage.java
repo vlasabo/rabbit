@@ -1,6 +1,5 @@
 package com.example.rabbit.dto;
 
-import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
@@ -9,7 +8,6 @@ import javax.validation.constraints.NotNull;
 /**
  * Created by vladimirsabo on 17.10.2024
  */
-@Builder
 @Data
 public class MyTestBrokerMessage implements BrokerMessage {
     @NotBlank

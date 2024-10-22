@@ -1,13 +1,20 @@
 services:
   rabbitmq:
-    image: 'rabbitmq:latest'
+    image: 'rabbitmq:3-management'
     environment:
       - ${RABBITMQ_PASS}
       - ${RABBITMQ_USER}
     ports:
+      - '15672:15672'
       - '5672'
     depends_on:
       - postgres
+
+  #  rabbit_management:
+  #    image: 'rabbitmq:3-management'
+  #    ports:
+  #      - '15672:15672'
+  #      - '5672:5672'
 
   postgres:
     container_name: postgres

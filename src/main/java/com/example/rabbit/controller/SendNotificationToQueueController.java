@@ -21,7 +21,7 @@ public class SendNotificationToQueueController {
     private final SendMessageService sendMessageService;
 
     @PostMapping("/test")
-    public ResponseEntity<String> sendTestMessage(@Validated @RequestBody MyTestBrokerMessage message) {
+    public ResponseEntity<Long> sendTestMessage(@Validated @RequestBody MyTestBrokerMessage message) {
         return new ResponseEntity<>(sendMessageService.sendMessage(message), HttpStatus.CREATED);
     }
 }

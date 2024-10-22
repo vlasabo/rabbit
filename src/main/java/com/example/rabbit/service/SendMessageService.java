@@ -1,14 +1,26 @@
 package com.example.rabbit.service;
 
 import com.example.rabbit.dto.BrokerMessage;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by vladimirsabo on 17.10.2024
  */
 @Service
+@RequiredArgsConstructor
+@Slf4j
 public class SendMessageService {
-    public String sendMessage(BrokerMessage brokerMessage) {
-        return "";
+    private final EnqueueDequeService enqueueDequeService;
+    private final ReceivedMessageService receivedMessageService;
+
+    @Transactional
+    public Long sendMessage(BrokerMessage brokerMessage) {
+        log.info("try to received message {} to queue {}", brokerMessage.getBody(), brokerMessage.getQueue());
+        Long id = receivedMessageService.saveMessage(brokerMessage);
+        enqueueDequeService.publishMessage(brokerMessage.getBody());
+        return id;
     }
 }

@@ -3,13 +3,22 @@ spring:
     database: POSTGRESQL
     show-sql: true
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create-drop
   datasource:
     url: ${SPRING_DATASOURCE_URL}
     hikari:
-      username:  ${POSTGRES_USER}
+      username: ${POSTGRES_USER}
       password: ${POSTGRES_PASS}
       driver-class-name: org.postgresql.Driver
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: ${RABBITMQ_USER}
+    password: ${RABBITMQ_PASS}
+rabbitmq:
+  queue: my_test_queue
+  exchange: my_test_exchange
+  routingkey: my_test_routingkey
 
 logging:
   level:
