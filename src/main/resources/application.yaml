@@ -16,9 +16,11 @@ spring:
     username: ${RABBITMQ_USER}
     password: ${RABBITMQ_PASS}
 rabbitmq:
-  queue: my_test_queue
+  queue1: my_test_queue1
+  queue2: my_test_queue2
   exchange: my_test_exchange
-  routingkey: my_test_routingkey
+  routingkey1: my_test_routingkey1
+  routingkey2: my_test_routingkey2
 
 logging:
   level:

@@ -22,7 +22,7 @@ public class BrokerMessageEntity implements BrokerMessage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String queue;
+    private String routingKey;
     @Embedded
     private BodyMessageEntity body;
 

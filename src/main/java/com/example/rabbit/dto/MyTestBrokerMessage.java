@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class MyTestBrokerMessage implements BrokerMessage {
     @NotBlank
-    private String queue;
+    private String routingKey;
     @NotBlank
     private TestBodyMessage body;
 

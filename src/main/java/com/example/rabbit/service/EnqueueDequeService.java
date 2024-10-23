@@ -16,14 +16,12 @@ public class EnqueueDequeService {
     @Value("${rabbitmq.exchange}")
     String exchange;
 
-    @Value("${rabbitmq.routingkey}")
-    private String routingkey;
 
     public EnqueueDequeService(RabbitTemplate amqpTemplate) {
         this.amqpTemplate = amqpTemplate;
     }
 
-    public void publishMessage(BodyMessage bodyMessage) {
-        amqpTemplate.convertAndSend(exchange, routingkey, bodyMessage);
+    public void publishMessage(String routingKey, BodyMessage bodyMessage) {
+        amqpTemplate.convertAndSend(exchange, routingKey, bodyMessage);
     }
 }

@@ -18,7 +18,7 @@ public class SendingMessageService {
         var entity = new BrokerMessageEntity();
         BrokerMessageEntity.BodyMessageEntity body = new BrokerMessageEntity.BodyMessageEntity(message.getBody().getBody());
         entity.setBody(body);
-        entity.setQueue(message.getQueue());
+        entity.setRoutingKey(message.getRoutingKey());
         var savedEntity = repository.save(entity);
         return savedEntity.getId();
     }

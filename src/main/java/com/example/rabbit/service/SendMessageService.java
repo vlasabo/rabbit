@@ -18,9 +18,9 @@ public class SendMessageService {
 
     @Transactional
     public Long sendMessage(BrokerMessage brokerMessage) {
-        log.info("try to send message {} to queue {}", brokerMessage.getBody(), brokerMessage.getQueue());
+        log.info("try to send message {} to queue {}", brokerMessage.getBody(), brokerMessage.getRoutingKey());
         Long id = sendingMessageService.saveMessage(brokerMessage);
-        enqueueDequeService.publishMessage(brokerMessage.getBody());
+        enqueueDequeService.publishMessage(brokerMessage.getRoutingKey(), brokerMessage.getBody());
         return id;
     }
 }
