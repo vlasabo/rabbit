@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  * Created by vladimirsabo on 22.10.2024
  */
 @Repository
-public interface ReceivedMessageRepository extends CrudRepository<BrokerMessageEntity, Long> {
+public interface SentMessageRepository extends CrudRepository<BrokerMessageEntity, Long> {
 }

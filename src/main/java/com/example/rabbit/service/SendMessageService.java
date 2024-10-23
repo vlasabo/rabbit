@@ -14,12 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 public class SendMessageService {
     private final EnqueueDequeService enqueueDequeService;
-    private final ReceivedMessageService receivedMessageService;
+    private final SendingMessageService sendingMessageService;
 
     @Transactional
     public Long sendMessage(BrokerMessage brokerMessage) {
-        log.info("try to received message {} to queue {}", brokerMessage.getBody(), brokerMessage.getQueue());
-        Long id = receivedMessageService.saveMessage(brokerMessage);
+        log.info("try to send message {} to queue {}", brokerMessage.getBody(), brokerMessage.getQueue());
+        Long id = sendingMessageService.saveMessage(brokerMessage);
         enqueueDequeService.publishMessage(brokerMessage.getBody());
         return id;
     }

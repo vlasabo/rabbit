@@ -2,7 +2,7 @@ package com.example.rabbit.service;
 
 import com.example.rabbit.dto.BrokerMessage;
 import com.example.rabbit.entity.BrokerMessageEntity;
-import com.example.rabbit.repository.ReceivedMessageRepository;
+import com.example.rabbit.repository.SentMessageRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class ReceivedMessageService {
-    private final ReceivedMessageRepository repository;
+public class SendingMessageService {
+    private final SentMessageRepository repository;
 
     public Long saveMessage(BrokerMessage message) {
         var entity = new BrokerMessageEntity();
