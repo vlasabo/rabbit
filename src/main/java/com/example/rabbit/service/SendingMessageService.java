@@ -16,7 +16,10 @@ public class SendingMessageService {
 
     public Long saveMessage(BrokerMessage message) {
         var entity = new BrokerMessageEntity();
-        BrokerMessageEntity.BodyMessageEntity body = new BrokerMessageEntity.BodyMessageEntity(message.getBody().getBody());
+        var body = new BrokerMessageEntity.BodyMessageEntity(
+                message.getBody().getBody(),
+                message.getBody().getExtension()
+        );
         entity.setBody(body);
         entity.setRoutingKey(message.getRoutingKey());
         var savedEntity = repository.save(entity);

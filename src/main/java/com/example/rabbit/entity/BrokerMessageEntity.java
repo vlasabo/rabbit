@@ -34,5 +34,7 @@ public class BrokerMessageEntity implements BrokerMessage {
     public static class BodyMessageEntity implements BodyMessage {
         @NotNull
         String body;
+        @NotNull
+        String extension;
     }
 }

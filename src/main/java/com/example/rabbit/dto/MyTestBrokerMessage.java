@@ -19,5 +19,7 @@ public class MyTestBrokerMessage implements BrokerMessage {
     private static class TestBodyMessage implements BodyMessage {
         @NotNull
         String body;
+        @NotNull
+        String extension;
     }
 }
